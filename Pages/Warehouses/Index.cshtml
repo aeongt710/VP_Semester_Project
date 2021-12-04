@@ -1,0 +1,246 @@
+﻿@page
+@model sem1.Pages.Warehouses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+@*<form  method="post">
+    <label asp-for="WarehouseName"></label>
+    <input asp-for="WarehouseName" />
+    <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" />
+</form>*@
+
+<div id="search" class="Products">
+    <div class="tab">
+        <button class="tablinks" onclick="opentab(event, 'Name')">Search by Product Name</button>
+        <button class="tablinks" onclick="opentab(event, 'id')">Search by Product ID</button>
+    </div>
+    <div id="Name" class="tabcontent">
+        @*<form method="post">
+            <label asp-for="WarehouseName"></label>
+            <input asp-for="WarehouseName" id="sName" name="sName"  />
+            <input class="sbmt" type="submit" asp-route-WarehouseName="@Model.WarehouseName" >
+        </form>*@
+        <form  method="post">
+            <label asp-for="WarehouseName"></label>
+            <input asp-for="WarehouseName" />
+            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-for-TaskOf="Name"/>
+        </form>
+    </div>
+
+    <div id="id" class="tabcontent">
+        <form>
+            <label for="sID"><h3>Search by Product ID</h3></label>
+            <input min="0" step="1" type="number" id="sID" name="sID" placeholder="Type in the Product's ID Number.." autocomplete="off" required />
+            <input class="sbmt" type="submit" value="Submit">
+        </form>
+    </div>
+
+</div>
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Warehouse[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Warehouse[0].Volume)
+                </th>
+                <th>
+                    Total Volume
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Warehouse)
+            {
+                Model.Volume= 0;
+                Model.ItemsInWarehouse= Model.AllItems.Where(m => m.WarehouseId == item.Id).ToList();
+                foreach (var vol in Model.ItemsInWarehouse)
+                {
+                    Model.Product = Model.AllProducts.FirstOrDefault(m=>m.Id == vol.ProductId);
+                    if(Model.Product!=null)
+                        Model.Volume = Model.Volume + Model.Product.Height * Model.Product.Width * Model.Product.Length;
+                }
+                Model.Volume = Model.Volume + item.Volume;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Volume)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-for-TaskOf="">Items</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <style>
+
+
+
+/* div 1 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+ /*(min-width: 1250px) {*/
+  .card-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    max-width: none;
+    text-align: left;
+    width: 100%;
+
+    max-width: 1191px;
+    max-height: 800px;
+  }
+
+  .hero-image-desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    overflow: hidden;
+  }
+
+  .hero-image-mobile {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .text-box {
+    width: 50%;
+    text-align: left;
+    padding: 0 40px;
+  }
+
+.st {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin-top: 40px;
+  }
+/*}*/
+
+/* search products chart */
+.Products{
+padding-top: 30px;
+padding-left: 100px;
+padding-right: 90px;
+padding-bottom: 50px;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+
+
+}
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: hsl(0, 0%, 95%);
+}
+
+/* search form */
+
+form input {
+	margin:15px 0;
+	padding:15px 10px;
+	width:100%;
+	outline:none;
+	border:1px solid #bbb;
+	border-radius:20px;
+	display:inline-block;
+	-webkit-box-sizing:border-box;
+	   -moz-box-sizing:border-box;
+	        box-sizing:border-box;
+    -webkit-transition:0.2s ease all;
+	   -moz-transition:0.2s ease all;
+	    -ms-transition:0.2s ease all;
+	     -o-transition:0.2s ease all;
+	        transition:0.2s ease all;
+}
+
+ .sbmt{
+  background:linear-gradient(to top left, #9999ff 0%, #ff99cc 100%);
+  cursor: pointer;
+}
+
+.sbmt:hover{
+  background: linear-gradient(to top left, #9900cc 0%, #ff99cc 100%);
+}
+
+    </style>
+
+<script type="text/javascript">
+    function opentab(evt, searchmthd) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(searchmthd).style.display = "block";
+        evt.currentTarget.className += " active";
+        return;
+    }
+</script>

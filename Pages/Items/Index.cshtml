@@ -1,0 +1,68 @@
+﻿@page
+@model sem1.Pages.Items.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form action="/" method="post">
+    <label asp-for="SerachProductName"></label>
+    <input asp-for="SerachProductName"  />
+    <input type="submit"  asp-route-ProductName="@Model.SerachProductName"/>
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Product.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Product.Name)
+            </th>
+            <th>
+                Volume
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Warehouse.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Warehouse.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @(item.Product.Length * item.Product.Width* item.Product.Height)
+                @*@Html.DisplayFor(modelItem => item.Product.Length* item.Product.Width* item.Product.Height)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warehouse.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warehouse.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

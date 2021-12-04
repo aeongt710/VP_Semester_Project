@@ -1,0 +1,54 @@
+﻿@page
+@model sem1.Areas.Identity.Pages.Roles.EditModel
+@{
+}
+<h1>Edit</h1>
+
+<h4>Role</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Role.Id" />
+            <div class="form-group">
+                <label asp-for="Role.Name" class="control-label"><b>Selected Role:</b> @Model.Role.Name</label>
+                <span asp-validation-for="Role.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <table class="table" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h3> All Users In the System:</h3>
+                            </th>
+                            <th>
+                                <h3>Users In the Role:</h3>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @foreach (var user in Model.identityUsers)
+                                {
+                                    <input type="submit" asp-route-User="@user.Id" asp-route-RoleID="@Model.Role.Id" asp-route-Role="@Model.Role.Name" asp-route-taskof="AddUser" value="@user.UserName [✓]" class="form-control" />
+                                }
+                            </td>
+                            <td>
+                                @foreach (var user in Model.identityRoleUsers)
+                                {
+                                    <input type="submit" asp-route-User="@user.Id" asp-route-RoleID="@Model.Role.Id" asp-route-Role="@Model.Role.Name" asp-route-taskof="RemoveUser" value="@user.UserName [✘]" class="form-control" />
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
