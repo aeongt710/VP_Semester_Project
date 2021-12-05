@@ -20,8 +20,10 @@ namespace sem1.Pages.Warehouses
             _context = context;
         }
 
+        public Product Product { get; set; }
+        public IList<Product> AllProducts { get; set; }
         public Warehouse Warehouse { get; set; }
-        public IList<Item> Items { get; set; }
+        public IList<Item> ItemsInWarehouse { get; set; }
 
         [Display(Name = "Occupied Volume")]
         public int CalVolume { get; set; }
@@ -33,7 +35,8 @@ namespace sem1.Pages.Warehouses
             }
 
             Warehouse = await _context.Warehouse.FirstOrDefaultAsync(m => m.Id == id);
-            ItemsInWarehouse();
+            AllProducts = await _context.Product.ToListAsync();
+            ItemsInWarehouseFunction();
 
             if (Warehouse == null)
             {
@@ -41,14 +44,14 @@ namespace sem1.Pages.Warehouses
             }
             return Page();
         }
-        public void ItemsInWarehouse()
+        public void ItemsInWarehouseFunction()
         {
             CalVolume = 0;
-            Items = _context.Item.Where(m => m.WarehouseId == Warehouse.Id).ToList();
+            ItemsInWarehouse = _context.Item.Where(m => m.WarehouseId == Warehouse.Id).ToList();
             
-            if(Items != null)
+            if(ItemsInWarehouse != null)
             {
-                foreach (Item item in Items)
+                foreach (Item item in ItemsInWarehouse)
                 {
                     Product product = _context.Product.FirstOrDefault(m => m.Id == item.ProductId);
                     CalVolume = CalVolume + (product.Length * product.Width * product.Height);

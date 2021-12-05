@@ -37,6 +37,44 @@
         </dd>
     </dl>
 </div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h4>Items In Warehouse</h4>
+        <div class="form-group">
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            <h5>Items</h5>
+                        </th>
+                        <th>
+                            <h5>Volume</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{if (Model.ItemsInWarehouse != null)
+                            foreach (var items in Model.ItemsInWarehouse)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            Model.Product = Model.AllProducts.FirstOrDefault(m => m.Id == items.ProductId);
+                                        }
+                                        @Model.Product.Name
+                                    </td>
+                                    <td>
+                                        @(Model.Product.Height* Model.Product.Width* Model.Product.Length)
+                                    </td>
+                                </tr>
+                            }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Warehouse.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
