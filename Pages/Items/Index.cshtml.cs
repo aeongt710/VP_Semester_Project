@@ -23,18 +23,29 @@ namespace sem1.Pages.Items
         [BindProperty]
         public IList<Item> Item { get;set; }
 
-        public async Task OnGetAsync()
+        //public async Task OnGetAsync()
+        //{
+        //    Item = await _context.Item
+        //        .Include(i => i.Product)
+        //        .Include(i => i.Warehouse).ToListAsync();
+        //}
+
+        public async Task OnGetAsync(int id, string taskof)
         {
             Item = await _context.Item
                 .Include(i => i.Product)
                 .Include(i => i.Warehouse).ToListAsync();
+            if (taskof == "RouteWarehouseID")
+                Item = Item.Where(m => m.WarehouseId == id).ToList();
+            else if (taskof == "RouteProductID")
+                Item = Item.Where(m => m.ProductId == id).ToList();
         }
         //public async Task OnGetAsync(string ProductName)
         //{
         //    Item = await _context.Item
         //        .Include(i => i.Product)
         //        .Include(i => i.Warehouse).ToListAsync();
-            
+
         //}
 
         //public async Task<IActionResult> OnPostAsync(string ProductName)

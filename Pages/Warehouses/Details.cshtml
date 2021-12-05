@@ -23,6 +23,18 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Warehouse.Volume)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CalVolume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CalVolume)
+        </dd>
+        <dt class="col-sm-2">
+            Total Volume
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.CalVolume + Model.Warehouse.Volume)
+        </dd>
     </dl>
 </div>
 <div>
