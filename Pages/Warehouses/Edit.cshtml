@@ -53,15 +53,17 @@
                     <tbody>
                         <tr>
                             <td>
-                                @foreach (var pds in Model.AllProducts)
+                                @*@foreach (var pds in Model.AllProducts)
                                 {
                                     <input type="submit" asp-route-PID="@pds.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="AddProduct" value="C @pds.Id @pds.Name [✓]" class="form-control" />
-                                }
+                                }*@
                             </td>
                             <td>
                                 @foreach (var itw in Model.ItemsInWareHouse)
                                 {
-                                    <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Id  @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Name [✘]" class="form-control" />
+                                    <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @itw.ProductId  @itw.Product.Name [✘]" class="form-control" />
+                              //      <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Id  @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Name [✘]" class="form-control" />
+
                                 }
                             </td>
                         </tr>
