@@ -22,6 +22,14 @@ namespace sem1.Pages.Products
         [BindProperty]
         public Product Product { get; set; }
 
+        //public IList<Warehouse> Warehouses { get; set; }
+
+        public IList<Item> Items { get; set; }
+
+        public Dictionary<int,Warehouse> Warehouses { get; set; }
+
+        public IList<Warehouse> Ware { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -30,6 +38,12 @@ namespace sem1.Pages.Products
             }
 
             Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
+            Items = await _context.Item.Include(a=>a.Warehouse).Where(m => m.ProductId == id).ToListAsync();
+            
+            foreach(var item in Items)
+            {
+                Ware.Add(item.Warehouse);
+            }
 
             if (Product == null)
             {

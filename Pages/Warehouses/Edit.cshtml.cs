@@ -41,7 +41,7 @@ namespace sem1.Pages.Warehouses
             Warehouse = await _context.Warehouse.FirstOrDefaultAsync(m => m.Id == id);
             AllItems = await _context.Item.Include(m=>m.Product).ToListAsync();
             //AllItems = await _context.Item.Include("Product").ToListAsync();
-            //AllProducts = await _context.Product.ToListAsync();
+            AllProducts = await _context.Product.ToListAsync();
             ItemsInWareHouse = AllItems.Where(m => m.WarehouseId == Warehouse.Id).ToList();
 
             if (Warehouse == null)
@@ -85,6 +85,8 @@ namespace sem1.Pages.Warehouses
                 if(AddProduct(PID, WID))
                 {
                     //Notification
+                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
+                    //MessageBox.Show("Error Message", "Error Title", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             else if(TaskOf == "RemoveItem")

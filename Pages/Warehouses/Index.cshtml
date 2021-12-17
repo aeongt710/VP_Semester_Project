@@ -10,35 +10,28 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-@*<form  method="post">
-        <label asp-for="WarehouseName"></label>
-        <input asp-for="WarehouseName" />
-        <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" />
-    </form>*@
 
-<div id="search" class="Products">
-    <div class="tab">
-        <button class="tablinks" onclick="opentab(event, 'Name')">Search by Product Name</button>
-        <button class="tablinks" onclick="opentab(event, 'id')">Search by Product ID</button>
+<div id="search" class="zProducts">
+    <div class="ztab">
+        <button class="tablinks" onclick="opentab(event, 'Name')">Search by WareHouse</button>
+        <button class="tablinks" onclick="opentab(event, 'id')">Filter by Volume</button>
     </div>
-    <div id="Name" class="tabcontent">
-        @*<form method="post">
-                <label asp-for="WarehouseName"></label>
-                <input asp-for="WarehouseName" id="sName" name="sName"  />
-                <input class="sbmt" type="submit" asp-route-WarehouseName="@Model.WarehouseName" >
-            </form>*@
+    <div id="Name" class="ztabcontent">
         <form method="post">
             <label asp-for="WarehouseName"></label>
             <input asp-for="WarehouseName" />
-            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="sbmt" value="Search"/>
+            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="zsbmt" value="Search"/>
         </form>
     </div>
 
-    <div id="id" class="tabcontent">
+    <div id="id" class="ztabcontent">
         <form method="post">
             <label asp-for="@Model.MinVolume"></label>
             <input asp-for="@Model.MinVolume" />
-            <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-taskof="SearchWarehouseMinVolume" class="sbmt" value="Search" />
+            <label asp-for="@Model.MinVolume"></label>
+            <input asp-for="@Model.MinVolume" />
+            <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-taskof="SearchWarehouseMinVolume" class="zsbmt" value="Search" />
+
         </form>
     </div>
 
@@ -163,13 +156,13 @@
         padding-bottom: 50px;
     }
 
-    .tab {
+    .ztab {
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #f1f1f1;
     }
 
-        .tab button {
+        .ztab button {
             background-color: inherit;
             float: left;
             border: none;
@@ -180,15 +173,15 @@
             font-size: 17px;
         }
 
-            .tab button:hover {
+            .ztab button:hover {
                 background-color: #ddd;
             }
 
-            .tab button.active {
+            .ztab button.active {
                 background-color: #ccc;
             }
 
-    .tabcontent {
+    .ztabcontent {
         display: none;
         padding: 6px 12px;
         border: 1px solid #ccc;
@@ -216,22 +209,22 @@
         transition: 0.2s ease all;
     }
 
-    .sbmt {
+    .zsbmt {
         background: linear-gradient(to top left, #9999ff 0%, #ff99cc 100%);
         cursor: pointer;
     }
 
-        .sbmt:hover {
+        .zsbmt:hover {
             background: linear-gradient(to top left, #9900cc 0%, #ff99cc 100%);
         }
 </style>
 
 <script type="text/javascript">
     function opentab(evt, searchmthd) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+        var i, ztabcontent, tablinks;
+        ztabcontent = document.getElementsByClassName("ztabcontent");
+        for (i = 0; i < ztabcontent.length; i++) {
+            ztabcontent[i].style.display = "none";
         }
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
