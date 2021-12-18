@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace sem1.Areas.Identity.Pages.Roles
+namespace sem1.Areas.Identity.Pages.Users
 {
     public class CreateModel : PageModel
     {

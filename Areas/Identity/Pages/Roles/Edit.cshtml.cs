@@ -69,9 +69,5 @@ namespace sem1.Areas.Identity.Pages.Roles
 
         }
 
-        private bool StudentExists(string id)
-        {
-            return roleManager.Roles.Any(e => e.Id == id);
-        }
     }
 }
