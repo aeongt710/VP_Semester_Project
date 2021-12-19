@@ -58,6 +58,15 @@ namespace sem1
                 app.UseHsts();
             }
 
+            //
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
+
+            app.UseHttpsRedirection();
+            //
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

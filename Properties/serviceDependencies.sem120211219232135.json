@@ -4,7 +4,10 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sem1dbserver/databases/sem1_db",
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:DefaultConnection",
-      "secretStore": "AzureAppSettings"
+      "secretStore": "AzureAppSettings",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
