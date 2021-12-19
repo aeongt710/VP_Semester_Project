@@ -1,0 +1,444 @@
+﻿body {
+    /*margin: 0;*/
+    font-family: calibri;
+    background-image: url("../img/bg.png");
+}
+
+
+
+.zlogo {
+    color: black;
+    display: inline-lock;
+}
+
+.zheader {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+}
+
+    .zheader ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    .zheader li a {
+        display: block;
+        padding: 20px 20px;
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+    }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.zheader li a:hover,
+.zheader .zmenu-btn:hover {
+    background-color: #f4f4f4;
+}
+
+.zheader .zlogo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+/* menu */
+
+.zheader .zmenu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.zheader .zmenu-icon {
+    cursor: pointer;
+    display: inline-block;
+    /* float: right; */
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+
+    .zheader .zmenu-icon .znavicon {
+        background: #333;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background .2s ease-out;
+        width: 18px;
+    }
+
+        .zheader .zmenu-icon .znavicon:before,
+        .zheader .zmenu-icon .znavicon:after {
+            background: #333;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+
+        .zheader .zmenu-icon .znavicon:before {
+            top: 5px;
+        }
+
+        .zheader .zmenu-icon .znavicon:after {
+            top: -5px;
+        }
+
+/* menu btn */
+
+.zheader .zmenu-btn {
+    display: none;
+}
+
+    .zheader .zmenu-btn:checked ~ .zmenu {
+        max-height: 240px;
+    }
+
+    .zheader .zmenu-btn:checked ~ .zmenu-icon .znavicon {
+        background: transparent;
+    }
+
+        .zheader .zmenu-btn:checked ~ .zmenu-icon .znavicon:before {
+            transform: rotate(-45deg);
+        }
+
+        .zheader .zmenu-btn:checked ~ .zmenu-icon .znavicon:after {
+            transform: rotate(45deg);
+        }
+
+    .zheader .zmenu-btn:checked ~ .zmenu-icon:not(.steps) .znavicon:before,
+    .zheader .zmenu-btn:checked ~ .zmenu-icon:not(.steps) .znavicon:after {
+        top: 0;
+    }
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+    .zheader li {
+        float: left;
+    }
+
+        .zheader li a {
+            padding: 22px 14px;
+        }
+
+    .zheader .zmenu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+
+    .zheader .zmenu-icon {
+        display: none;
+    }
+}
+
+
+/*.zcard {
+}*/
+/* div 1 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: hsl(233, 47%, 7%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.zcard-container {
+    background-color: hsl(244, 38%, 16%);
+    /*width: 90%;*/
+    border-radius: 10px;
+    width: 100%;
+    max-width: 475px;
+    overflow: hidden;
+    margin: 30px 0;
+    padding:50px;
+}
+
+.zhero-image-container {
+    background-color: hsl(0, 0%, 95%);
+}
+
+.zhero-image-mobile {
+    display: block;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+
+.ztext-box {
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.zhero-image-desktop {
+    display: none;
+}
+
+h1 {
+    color: hsl(0, 0%, 100%);
+    font-family: "inter", sans-serif;
+    font-size: 1.76rem;
+}
+
+    h1 span {
+        color: hsl(280, 6%, 90%);
+    }
+
+.zhero-text p {
+    font-family: "lexend Deca", sans-serif;
+    font-size: 0.938rem;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, 0.75);
+    line-height: 1.6rem;
+}
+
+.zst {
+    list-style: none;
+    font-family: "inter", sans-serif;
+    text-transform: uppercase;
+    color: hsla(0, 0%, 100%, 0.6);
+    font-size: 0.8rem;
+    display: block;
+    letter-spacing: 0.05rem;
+    padding: 0;
+}
+
+.zstli {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    .zstli span:nth-of-type(1) {
+        color: hsl(0, 0%, 100%);
+        font-size: 1.3rem;
+        font-weight: bolder;
+        margin-bottom: 5px;
+    }
+
+    .zstli span:nth-of-type(2) {
+        letter-spacing: 0.2rem;
+        font-size: 0.7rem;
+    }
+
+.zattribution {
+    font-size: 0.94rem;
+    text-align: center;
+    color: hsla(0, 0%, 100%, 0.6);
+}
+
+    .zattribution a {
+        color: hsl(278, 15%, 90%);
+    }
+
+@media (min-width: 1250px) {
+    .zcard-container {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: none;
+        text-align: left;
+        width: 100%;
+        max-width: 1191px;
+        max-height: 800px;
+    }
+
+    .zhero-image-desktop {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+        overflow: hidden;
+    }
+
+    .zhero-image-mobile {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .ztext-box {
+        width: 50%;
+        text-align: left;
+        padding: 0 40px;
+    }
+
+    .zst {
+        display: flex;
+        justify-content: space-between;
+        max-width: 400px;
+        margin-top: 40px;
+    }
+}
+
+/* search products chart */
+.zProducts {
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 90px;
+    padding-bottom: 50px;
+}
+
+.ztab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+    .ztab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+        .ztab button:hover {
+            background-color: #ddd;
+        }
+
+        .ztab button.active {
+            background-color: #ccc;
+        }
+
+.ztabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: hsl(0, 0%, 95%);
+}
+
+/* search form */
+
+form input {
+    margin: 15px 0;
+    padding: 15px 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+}
+
+.zsbmt {
+    background: linear-gradient(to top left, #9999ff 0%, #ff99cc 100%);
+    cursor: pointer;
+}
+
+    .zsbmt:hover {
+        background: linear-gradient(to top left, #9900cc 0%, #ff99cc 100%);
+    }
+
+.ztable {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .ztable caption {
+        font-size: 1.5em;
+        margin: .5em 0 .75em;
+    }
+
+    .ztable tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: .35em;
+    }
+
+    .ztable th,
+    .ztable td {
+        padding: .625em;
+        text-align: center;
+    }
+
+    .ztable th {
+        font-size: .85em;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+
+@media screen and (max-width: 600px) {
+    .ztable {
+        border: 0;
+    }
+
+        .ztable caption {
+            font-size: 1.3em;
+        }
+
+        .ztable thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        .ztable tr {
+            border-bottom: 3px solid #ddd;
+            display: block;
+            margin-bottom: .625em;
+        }
+
+        .ztable td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+        }
+
+            .ztable td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .ztable td:last-child {
+                border-bottom: 0;
+            }
+}
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using sem1.Models;
 
 namespace sem1.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;

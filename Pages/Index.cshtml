@@ -3,9 +3,46 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
+<link href="~/css/index.css" rel="stylesheet" />
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>*@
 
+<div class="zcard">
+    <div class="zcard-container">
+        <div class="zhero-image-container">
+            <img class="zhero-image-mobile"
+                 src="./img/stat.png"
+                  />
+            <img class="zhero-image-desktop"
+                 src="./img/stat.png"
+                />
+        </div>
+
+        <div class="ztext-box">
+            <div class="zhero-text">
+                <h1>Get <span>Stats & insights</span> that help your business grow.</h1>
+                <p>
+                    Data analytics helps  organizations harness their data and use it to identify new opportunities. That, in turn, leads to smarter business moves, more efficient operations, higher profits and happier customers.
+
+                </p>
+            </div>
+
+            <ul class="zst">
+                <li class="zstli">
+                    <span>@Model._warehouse+</span>
+                    <span><a asp-page="./Warehouses/Index" style="color:azure">WAREHOUSES</a></span>
+                </li>
+                <li class="zstli">
+                    <span>@Model._products+</span>
+                    <span><a asp-page="./Products/Index" style="color:azure">PRODUCTS</a></span>
+                </li>
+                <li class="zstli">
+                    <span>@Model._items+</span>
+                    <span><a asp-page="./Items/Index" style="color:azure">ITEMS</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

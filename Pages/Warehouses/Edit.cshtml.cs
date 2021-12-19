@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,9 +16,11 @@ namespace sem1.Pages.Warehouses
     {
         private readonly sem1.Data.ApplicationDbContext _context;
 
-        public EditModel(sem1.Data.ApplicationDbContext context)
+        private readonly INotyfService  _notyfService;
+        public EditModel(sem1.Data.ApplicationDbContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfService = notyfService;
         }
 
         [BindProperty]
@@ -82,16 +85,22 @@ namespace sem1.Pages.Warehouses
             }
             else if(TaskOf == "AddProduct")
             {
-                if(AddProduct(PID, WID))
+                if(!AddProduct(PID, WID))
                 {
+                    _notyfService.Error("Volume of Item is greater than Warehouse available Volume!", 5);
                     //Notification
                     //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
                     //MessageBox.Show("Error Message", "Error Title", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    _notyfService.Success("Item Added Successfully!", 5);
                 }
             }
             else if(TaskOf == "RemoveItem")
             {
                 RemoveItem(IID, WID);
+                _notyfService.Success("Item Removed Successfully!", 5);
             }
 
             return RedirectToAction("", new { id = WID });

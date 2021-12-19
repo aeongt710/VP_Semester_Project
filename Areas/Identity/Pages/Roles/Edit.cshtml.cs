@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace sem1.Areas.Identity.Pages.Roles
 {
+    //[Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private RoleManager<IdentityRole> roleManager;

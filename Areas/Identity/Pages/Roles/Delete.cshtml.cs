@@ -45,7 +45,7 @@ namespace sem1.Areas.Identity.Pages.Roles
 
             Role = await _roleManager.FindByIdAsync(id);
 
-            if (Role != null)
+            if (Role != null && Role.Name!="Admin")
             {
                 await _roleManager.DeleteAsync(Role);
             }
