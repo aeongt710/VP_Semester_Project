@@ -13,7 +13,7 @@ using sem1.Models;
 
 namespace sem1.Pages.Warehouses
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
