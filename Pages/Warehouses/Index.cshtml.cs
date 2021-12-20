@@ -29,7 +29,7 @@ namespace sem1.Pages.Warehouses
         //}
 
 
-        public async Task OnGetAsync(int id,string WarehouseName,string TaskOf, int MinVolume)
+        public async Task OnGetAsync(int id,string WarehouseName,string TaskOf, int MinVolume,int MaxVolume)
         {
             AllItems = await _context.Item.ToListAsync();
             Warehouse = await _context.Warehouse.ToListAsync();
@@ -48,7 +48,8 @@ namespace sem1.Pages.Warehouses
         }
         [BindProperty]
         public int MinVolume { get; set; }
-
+        [BindProperty]
+        public int MaxVolume { get; set; }
         public int Volume { get; set; }
         [BindProperty]
         public IList<Item> AllItems { get; set; }

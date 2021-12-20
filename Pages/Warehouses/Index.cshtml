@@ -28,10 +28,10 @@
         <form method="post">
             <label asp-for="@Model.MinVolume"></label>
             <input asp-for="@Model.MinVolume" />
-            <label asp-for="@Model.MinVolume"></label>
-            <input asp-for="@Model.MinVolume" />
+            @*<label asp-for="@Model.MaxVolume"></label>
+        <input asp-for="@Model.MaxVolume" />*@
             <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-taskof="SearchWarehouseMinVolume" class="zsbmt" value="Search" />
-
+            @*asp-route-MaxVolume="@Model.MaxVolume"*@
         </form>
     </div>
 
