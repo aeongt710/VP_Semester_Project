@@ -104,6 +104,7 @@
                 <th scope="col">Available Volume</th>
                 <th scope="col">Total Volume</th>
                 <th scope="col">Percentage</th>
+                <th scope="col">Address</th>
                 <th scope="col">Properties</th>
                 <th scope="col">Items</th>
             </tr>
@@ -134,10 +135,13 @@
                 <td data-label="Percentage">
                     <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
                 </td>
-                <td data-label="Properties">                    
+                <td data-label="Name">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td data-label="Properties">
                     &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |
                     <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>   
+                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
                 </td>
                 <td data-label="Items">
                     <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>

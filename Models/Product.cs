@@ -36,10 +36,10 @@ namespace sem1.Models
         public String Description { get; set; }
 
 
-        public int CategoryId { get; set; }
+        [Display(Name = "Product Vendor")]
+        public String Vendor { get; set; }
 
-        [Display(Name = "Category")]
-        public Category Category { get; set; }
+
 
         [Required]
         [Display(Name = "Price")]

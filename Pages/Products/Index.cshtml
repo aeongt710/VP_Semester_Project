@@ -17,11 +17,14 @@
         @*<caption>Warehouse Index</caption>*@
         <thead>
             <tr>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Id)</th>
+                @*<th scope="col">@Html.DisplayNameFor(model => model.Product[0].Id)</th>*@
                 <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Name)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Length)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Width)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Width)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Vendor)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Price)</th>
+                <th scope="col">Vlume</th>
                 <th scope="col">Items</th>
                 <th scope="col">Properties</th>
             </tr>
@@ -30,9 +33,9 @@
             @foreach (var item in Model.Product)
             {
             <tr>
-                <td data-label="Name">
+                @*<td data-label="Name">
                     @Html.DisplayFor(modelItem => item.Id)
-                </td>
+                </td>*@
                 <td data-label="Volume">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -44,6 +47,15 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vendor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @(item.Length*item.Width*item.Height)
                 </td>
                 <td data-label="Items">
                     <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteProductID"><img src="./img/item.png" alt=""></a>

@@ -24,6 +24,11 @@
                 <span asp-validation-for="Warehouse.Volume" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Warehouse.Address" class="control-label"></label>
+                <input asp-for="Warehouse.Address" class="form-control" />
+                <span asp-validation-for="Warehouse.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

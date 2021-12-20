@@ -21,7 +21,6 @@ namespace sem1.Pages.Products
 
         public IActionResult OnGet()
         {
-        ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             return Page();
         }
 

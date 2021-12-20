@@ -20,15 +20,15 @@ namespace sem1.Models
         public Warehouse Warehouse { get; set; }
 
 
-        ////[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        //[Display(Name = "Expiry Date")]
-        //[Required]
-        //public DateTime ExpiryDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:YYYY/MM/DD}")]
+        [Display(Name = "Expiry Date")]
+        public DateTime ExpiryDate { get; set; }
 
-        ////[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        //[Display(Name = "Created Date")]
-        //[Required]
-        //public DateTime CreatedDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:YYYY/MM/DD}")]
+        [Display(Name = "Created Date")]
+        public DateTime CreatedDate { get; set; }
 
 
     }

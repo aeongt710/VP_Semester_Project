@@ -18,5 +18,8 @@ namespace sem1.Models
         [Range(1, int.MaxValue, ErrorMessage = "Please enter correct value")]
         public int Volume { get; set; }
 
+        [Display(Name = "Address")]
+        public String Address { get; set; }
+
     }
 }
