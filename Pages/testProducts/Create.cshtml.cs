@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using sem1.Data;
 using sem1.Models;
 
-namespace sem1.Pages.Products
+namespace sem1.Pages.testProducts
 {
     public class CreateModel : PageModel
     {

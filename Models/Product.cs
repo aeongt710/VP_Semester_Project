@@ -10,6 +10,8 @@ namespace sem1.Models
     {
         [Display(Name = "Product ID")]
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Length")]
@@ -23,5 +25,24 @@ namespace sem1.Models
         [Display(Name = "Height")]
         [Range(1, int.MaxValue, ErrorMessage = "Please enter correct value")]
         public int Height { get; set; }
+
+
+        //[Required]
+        //[Display(Name = "Price")]
+        //public int Price { get; set; }
+
+
+        [Display(Name = "Description")]
+        public String Description { get; set; }
+
+
+        public int CategoryId { get; set; }
+
+        [Display(Name = "Category")]
+        public Category Category { get; set; }
+
+        [Required]
+        [Display(Name = "Price")]
+        public int Price { get; set; }
     }
 }

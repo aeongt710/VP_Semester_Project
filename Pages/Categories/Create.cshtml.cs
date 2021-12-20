@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using sem1.Data;
 using sem1.Models;
 
-namespace sem1.Pages.Products
+namespace sem1.Pages.Categories
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace sem1.Pages.Products
 
         public IActionResult OnGet()
         {
-        ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
-        public Product Product { get; set; }
+        public Category Category { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +35,7 @@ namespace sem1.Pages.Products
                 return Page();
             }
 
-            _context.Product.Add(Product);
+            _context.Category.Add(Category);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

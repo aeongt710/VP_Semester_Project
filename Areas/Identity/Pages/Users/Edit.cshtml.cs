@@ -12,7 +12,7 @@ namespace sem1.Areas.Identity.Pages.Users
     public class EditModel : PageModel
     {
 
-        private readonly UserManager<IdentityUser> userManager;
+        private  UserManager<IdentityUser> userManager;
 
         public EditModel( UserManager<IdentityUser> userManager)
         {
@@ -20,7 +20,7 @@ namespace sem1.Areas.Identity.Pages.Users
         }
 
         [BindProperty]
-        public IdentityUser user { get; set; }
+        public IdentityUser user22 { get; set; }
 
         public async Task<IActionResult> OnGetAsync(String id)
         {
@@ -29,9 +29,9 @@ namespace sem1.Areas.Identity.Pages.Users
                 return NotFound();
             }
 
-            user = await userManager.FindByIdAsync(id);
+            user22 = await userManager.FindByIdAsync(id);
 
-            if (user == null)
+            if (user22 == null)
             {
                 return NotFound();
             }
@@ -61,9 +61,9 @@ namespace sem1.Areas.Identity.Pages.Users
             {
                 return Page();
             }
-
-            await userManager.UpdateAsync(user);
-
+            //user.PhoneNumber = user.PhoneNumber;
+            await userManager.UpdateAsync(user22);
+           // userManager.up
 
             return Page();
         }

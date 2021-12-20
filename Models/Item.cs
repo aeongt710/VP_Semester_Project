@@ -18,5 +18,18 @@ namespace sem1.Models
         public int WarehouseId { get; set; }
         [Display(Name = "Warehouse")]
         public Warehouse Warehouse { get; set; }
+
+
+        ////[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        //[Display(Name = "Expiry Date")]
+        //[Required]
+        //public DateTime ExpiryDate { get; set; }
+
+        ////[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        //[Display(Name = "Created Date")]
+        //[Required]
+        //public DateTime CreatedDate { get; set; }
+
+
     }
 }

@@ -16,5 +16,6 @@ namespace sem1.Data
         public DbSet<sem1.Models.Product> Product { get; set; }
         public DbSet<sem1.Models.Item> Item { get; set; }
         public DbSet<sem1.Models.Warehouse> Warehouse { get; set; }
+        public DbSet<sem1.Models.Category> Category { get; set; }
     }
 }
