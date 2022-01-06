@@ -13,6 +13,8 @@ namespace sem1.Pages.Products
     public class DeleteModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
+        public List<Warehouse> Ware { get; set; }
+
 
         public DeleteModel(sem1.Data.ApplicationDbContext context)
         {
@@ -24,11 +26,10 @@ namespace sem1.Pages.Products
 
         //public IList<Warehouse> Warehouses { get; set; }
 
+        [BindProperty]
         public IList<Item> Items { get; set; }
 
-        public Dictionary<int,Warehouse> Warehouses { get; set; }
-
-        public IList<Warehouse> Ware { get; set; }
+        //public HashSet<Warehouse> Ware;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,13 +37,24 @@ namespace sem1.Pages.Products
             {
                 return NotFound();
             }
+           // Items = new List<Item>();
+            //Product = await Task.FromResult(_context.Product.FirstOrDefaultAsync(m => m.Id == id)).Result;
+            Product = _context.Product.FirstOrDefaultAsync(m => m.Id == id).Result;
 
-            Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
-            Items = await _context.Item.Include(a=>a.Warehouse).Where(m => m.ProductId == id).ToListAsync();
-            
+            Items =_context.Item.Include(a => a.Warehouse)
+                .Where(m => m.ProductId == id)
+                .ToListAsync().Result;
+            //Ware = new HashSet<Warehouse>();
             foreach(var item in Items)
             {
-                Ware.Add(item.Warehouse);
+                Ware = new List<Warehouse>();
+                Warehouse www = _context.Warehouse.FirstOrDefaultAsync(m => m.Id == item.Warehouse.Id).Result;
+
+
+                Ware.Add(www);
+
+
+                //Ware.Add(item.Warehouse);
             }
 
             if (Product == null)
@@ -51,6 +63,7 @@ namespace sem1.Pages.Products
             }
             return Page();
         }
+
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
@@ -63,11 +76,25 @@ namespace sem1.Pages.Products
 
             if (Product != null)
             {
+                await RemoveAsync(id);
                 _context.Product.Remove(Product);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
+        }
+
+        public async Task RemoveAsync(int? id)
+        {
+            int ProductVolume = Product.Length * Product.Width * Product.Height;
+            Items = _context.Item.Include(a => a.Warehouse)
+                .Where(m => m.ProductId == id)
+                .ToList();
+            for (int i = 0; i < Items.Count(); i++)
+            {
+                Items[i].Warehouse.Volume = Items[i].Warehouse.Volume + ProductVolume;
+                _context.Attach(Items[i]).State = EntityState.Modified;
+            }
         }
     }
 }
