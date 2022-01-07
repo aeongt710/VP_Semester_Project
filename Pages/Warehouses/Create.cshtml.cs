@@ -14,6 +14,7 @@ namespace sem1.Pages.Warehouses
     {
         private readonly sem1.Data.ApplicationDbContext _context;
 
+
         public CreateModel(sem1.Data.ApplicationDbContext context)
         {
             _context = context;

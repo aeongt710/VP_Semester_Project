@@ -9,30 +9,61 @@
 
 <h4>Warehouse</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Warehouse.Name" class="control-label"></label>
-                <input asp-for="Warehouse.Name" class="form-control" />
-                <span asp-validation-for="Warehouse.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Warehouse.Volume" class="control-label"></label>
-                <input asp-for="Warehouse.Volume" class="form-control" />
-                <span asp-validation-for="Warehouse.Volume" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Warehouse.Address" class="control-label"></label>
-                <input asp-for="Warehouse.Address" class="form-control" />
-                <span asp-validation-for="Warehouse.Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+@*<div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Warehouse.Name" class="control-label"></label>
+                    <input asp-for="Warehouse.Name" class="form-control" />
+                    <span asp-validation-for="Warehouse.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Warehouse.Volume" class="control-label"></label>
+                    <input asp-for="Warehouse.Volume" class="form-control" />
+                    <span asp-validation-for="Warehouse.Volume" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Warehouse.Address" class="control-label"></label>
+                    <input asp-for="Warehouse.Address" class="form-control" />
+                    <span asp-validation-for="Warehouse.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+<div class="ccenter-div">
+    @*<h1 style="text-align: center;">Add new products</h1>*@
+    <form class="aaddfrm" method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        
+        <div class="ggroup">
+            <input asp-for="Warehouse.Name"  class="iinput" placeholder=" ">
+            <span class="hhighlight" asp-validation-for="Warehouse.Name" hidden></span>
+            <span class="bbar" asp-validation-for="Warehouse.Name" ></span>
+            <label class="llabel" asp-for="Warehouse.Name"></label>
+        </div>
+
+        <div class="ggroup">
+            <input asp-for="Warehouse.Volume" class="iinput" placeholder=" ">
+            <span class="hhighlight" asp-validation-for="Warehouse.Volume" hidden></span>
+            <span class="bbar" asp-validation-for="Warehouse.Volume" ></span>
+            <label class="llabel" asp-for="Warehouse.Volume"></label>
+        </div>
+
+        <div class="ggroup">
+            <input asp-for="Warehouse.Address" class="iinput"  placeholder=" ">
+            <span class="hhighlight" asp-validation-for="Warehouse.Address" hidden></span>
+            <span class="bbar" asp-validation-for="Warehouse.Address" ></span>
+            <label class="llabel" asp-for="Warehouse.Address"></label>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
 </div>
 
 <div>

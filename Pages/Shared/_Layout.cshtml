@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/AddCard.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">sem1</a>
+    <header >
+        <nav style="background-color: #222629" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
+            <div class="container" style="background-color: #222629 ; color: #222629" >
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">VP Project</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,17 +24,17 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                             </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Warehouses/Index">Warehouses</a>
+                            <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Warehouses/Index">Warehouses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Products</a>
+                            <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Products/Index">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Items/Index">Items</a>
+                            <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Items/Index">Items</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -46,7 +47,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class=" footer text-white-50" style="  background-color: rgba(0,0,0,0.01); }">
         <div class="container">
             &copy; 2021 - sem1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
@@ -58,10 +59,25 @@
     <style>
         .nav-item:hover {
 
-            background-color: #e5e4e2;
+            background-color: #6B6E70;
+            border-radius: 25px;
 
         }
-        
+        body {
+            margin: 0;
+            font-family: calibri;
+            background: #6a9113; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #6a9113, #141517); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #6a9113, #141517); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-color: #222629;
+            color: #222629;
+            padding-bottom:50px;
+        }
+        footer{
+            padding-top: 20px;
+            border:none;
+            border: hidden;
+        }
     </style>
     
     @await Component.InvokeAsync("Notyf")

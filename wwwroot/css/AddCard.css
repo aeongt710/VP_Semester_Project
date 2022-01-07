@@ -1,0 +1,222 @@
+﻿/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap'); */
+
+
+.newtable {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .newtable {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+
+.newhead {
+    text-align: left;
+    padding: 15px;
+}
+
+.newdesc {
+    text-align: left;
+    padding: 15px;
+}
+
+.newrow:nth-child(even) {
+    background-color: #6B6E70;
+    color: white;
+}
+
+.newrow:hover:nth-child(even) {
+    color: black;
+}
+
+.newhead {
+    background-color: #474B4F;
+    color: white;
+}
+
+.newrow:hover {
+    background-color: #86C232;
+    color: white;
+}
+
+
+
+body {
+    background-color: #fcfcfc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ccenter-div {
+    /* position: absolute; */
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    height: auto;
+    /*background-color: hsl(244, 38%, 16%);*/
+    background-color: #fcfcfc;
+    border-radius: 3px;
+}
+
+.aaddfrm {
+    padding-top: 20px; /* here */
+    margin-left: 140px;
+    margin-right: 140px;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+    h2 small {
+        font-weight: normal;
+        color: #888;
+        display: block;
+    }
+
+/*.footer {
+    text-align: center;
+}
+
+    .footer a {
+        color: #53B2C8;
+    }*/
+
+/* form starting stylings ------------------------------- */
+.ggroup {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.iinput {
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    /*background-color: #ccc;*/
+    /*background-color: #fcfcfc;*/
+    /*border-radius:2px;*/
+    background-color: rgb(218, 212, 212);
+    border-bottom: 1px solid #757575;
+    border-radius: 15px 8px 5px 5px;
+}
+
+    .iinput:focus {
+        outline: none;
+    }
+
+/* LABEL ======================================= */
+.llabel {
+    color: black;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.iinput:focus ~ label, .iinput:not(:placeholder-shown) ~ .llabel {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bbar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+    .bbar:before, .bbar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #5264AE;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bbar:before {
+        left: 50%;
+    }
+
+    .bbar:after {
+        right: 50%;
+    }
+
+/* active state */
+input:focus ~ .bbar:before, input:focus ~ .bbar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.hhighlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+.iinput:focus ~ .hhighlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}

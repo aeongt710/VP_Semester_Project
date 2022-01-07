@@ -40,6 +40,7 @@ namespace sem1
                 config.IsDismissable = true; 
                 config.Position = NotyfPosition.BottomRight; 
             });
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
@@ -61,7 +62,7 @@ namespace sem1
             //
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
-
+            app.UseCookiePolicy();
             app.UseHttpsRedirection();
             //
 

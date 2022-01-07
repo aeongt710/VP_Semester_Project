@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,10 +17,11 @@ namespace sem1.Pages.Warehouses
     public class IndexModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
-
-        public IndexModel(sem1.Data.ApplicationDbContext context)
+        private readonly INotyfService _notyfService;
+        public IndexModel(sem1.Data.ApplicationDbContext context, INotyfService noty)
         {
             _context = context;
+            _notyfService = noty;
         }
 
         public IList<Warehouse> Warehouse { get;set; }
@@ -40,14 +43,16 @@ namespace sem1.Pages.Warehouses
             {
                 Warehouse = Warehouse.Where(m => m.Id == id).ToList();
             }
-            else if (TaskOf == "SearchWarehouseMinVolume")
+            else if (TaskOf == "FileterWarehouseByVolume")
             {
-                Warehouse = Warehouse.Where(m => m.Volume >= MinVolume).ToList();
+                Warehouse = Warehouse.Where(m => m.Volume >= MinVolume && m.Volume <= MaxVolume).ToList();
             }
-                
+            _notyfService.Success("Loaded",10);
         }
+        [Display(Name = "Minimum Available Volume")]
         [BindProperty]
         public int MinVolume { get; set; }
+        [Display(Name = "Maximum Available Volume")]
         [BindProperty]
         public int MaxVolume { get; set; }
         public int Volume { get; set; }
@@ -61,13 +66,13 @@ namespace sem1.Pages.Warehouses
         public IList<Product> AllProducts { get; set; }
         [BindProperty]
         public string WarehouseName { get; set; }
-        public async Task<IActionResult> OnPostAsync(string WarehouseName, string taskof, int MinVolume)
+        public async Task<IActionResult> OnPostAsync(string WarehouseName, string taskof, int MinVolume,int MaxVolume)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            return RedirectToAction("", new {WarehouseName = WarehouseName, TaskOf = taskof, MinVolume = MinVolume });
+            return RedirectToAction("", new {WarehouseName = WarehouseName, TaskOf = taskof, MinVolume = MinVolume, MaxVolume = MaxVolume });
 
         }
     }

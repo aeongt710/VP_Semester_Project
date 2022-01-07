@@ -28,9 +28,9 @@
         <form method="post">
             <label asp-for="@Model.MinVolume"></label>
             <input asp-for="@Model.MinVolume" />
-            @*<label asp-for="@Model.MaxVolume"></label>
-        <input asp-for="@Model.MaxVolume" />*@
-            <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-taskof="SearchWarehouseMinVolume" class="zsbmt" value="Search" />
+            <label asp-for="@Model.MaxVolume"></label>
+            <input asp-for="@Model.MaxVolume" />
+            <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-MaxVolume="@Model.MaxVolume" asp-route-taskof="FileterWarehouseByVolume" class="btn-secondary" value="Search" />
             @*asp-route-MaxVolume="@Model.MaxVolume"*@
         </form>
     </div>
@@ -96,17 +96,17 @@
 </table>*@
 
 <div class="w-index">
-    <table class="ztable">
+    <table class="ztable" style="border-color:black">
         @*<caption>Warehouse Index</caption>*@
         <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Available Volume</th>
-                <th scope="col">Total Volume</th>
-                <th scope="col">Percentage</th>
-                <th scope="col">Address</th>
-                <th scope="col">Properties</th>
-                <th scope="col">Items</th>
+            <tr class="newrow">
+                <th scope="col" class="newhead">Name</th>
+                <th scope="col" class="newhead">Available Volume</th>
+                <th scope="col" class="newhead">Total Volume</th>
+                <th scope="col" class="newhead">Percentage</th>
+                <th scope="col" class="newhead">Address</th>
+                <th scope="col" class="newhead">Properties</th>
+                <th scope="col" class="newhead">Items</th>
             </tr>
         </thead>
         <tbody>
@@ -122,28 +122,28 @@
                             Model.Volume = Model.Volume + Model.Product.Height * Model.Product.Width * Model.Product.Length;
                     }
                     Model.Volume = Model.Volume + item.Volume;
-            <tr>
-                <td data-label="Name">
+            <tr class="newrow">
+                <td data-label="Name" class="newdesc">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td data-label="Volume">
+                <td data-label="Volume" class="newdesc">
                     @Html.DisplayFor(modelItem => item.Volume)
                 </td>
-                <td data-label="Total Volume">
+                <td data-label="Total Volume" class="newdesc">
                     @Html.DisplayFor(modelItem => Model.Volume)
                 </td>
-                <td data-label="Percentage">
+                <td data-label="Percentage" class="newdesc">
                     <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
                 </td>
-                <td data-label="Name">
+                <td data-label="Name" class="newdesc">
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
-                <td data-label="Properties">
+                <td data-label="Properties" class="newdesc">
                     &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |
                     <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
                 </td>
-                <td data-label="Items">
+                <td data-label="Items" class="newdesc">
                     <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
                 </td>
             </tr>
