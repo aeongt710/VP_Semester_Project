@@ -9,50 +9,69 @@
 
 <h4>Product</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Product.Name" class="control-label"></label>
-                <input asp-for="Product.Name" class="form-control" />
-                <span asp-validation-for="Product.Name" class="text-danger"></span>
+<div class=" ccenter-div" >
+    @*<div class="col-md-4">*@
+    <form method="post" class="aaddfrm" style="margin-left:auto;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="ggroup">
+                <input asp-for="Product.Name" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Name" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Name"></span>
+                <label class="llabel2" asp-for="Product.Name"></label>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="ggroup">
+                <input asp-for="Product.Length" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Length" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Length"></span>
+                <label class="llabel2" asp-for="Product.Length"></label>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="ggroup">
+                <input asp-for="Product.Width" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Width" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Width"></span>
+                <label class="llabel2" asp-for="Product.Width"></label>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="ggroup">
+                <input asp-for="Product.Height" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Height" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Height"></span>
+                <label class="llabel2" asp-for="Product.Height"></label>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="ggroup">
+                <input asp-for="Product.Description" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Description" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Description"></span>
+                <label class="llabel2" asp-for="Product.Description"></label>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="ggroup">
+                <input asp-for="Product.Vendor" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Vendor" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Vendor"></span>
+                <label class="llabel2" asp-for="Product.Vendor"></label>
+            </div>
+        </div>
+        <div style="display:inline-block; padding-left:150px;">
+            <div class="ggroup">
+                <input asp-for="Product.Price" class="iinput" placeholder=" ">
+                <span class="hhighlight" asp-validation-for="Product.Price" hidden></span>
+                <span class="bbar" asp-validation-for="Product.Price"></span>
+                <label class="llabel" asp-for="Product.Price"></label>
             </div>
             <div class="form-group">
-                <label asp-for="Product.Length" class="control-label"></label>
-                <input asp-for="Product.Length" class="form-control" />
-                <span asp-validation-for="Product.Length" class="text-danger"></span>
+                <input type="submit" value="Save" class="bty" />
             </div>
-            <div class="form-group">
-                <label asp-for="Product.Width" class="control-label"></label>
-                <input asp-for="Product.Width" class="form-control" />
-                <span asp-validation-for="Product.Width" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Height" class="control-label"></label>
-                <input asp-for="Product.Height" class="form-control" />
-                <span asp-validation-for="Product.Height" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Description" class="control-label"></label>
-                <input asp-for="Product.Description" class="form-control" />
-                <span asp-validation-for="Product.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Vendor" class="control-label"></label>
-                <input asp-for="Product.Vendor" class="form-control" />
-                <span asp-validation-for="Product.Vendor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Price" class="control-label"></label>
-                <input asp-for="Product.Price" class="form-control" />
-                <span asp-validation-for="Product.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+
+    </form>
+    @*</div>*@
 </div>
 
 <div>

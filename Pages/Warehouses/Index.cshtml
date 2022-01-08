@@ -6,14 +6,12 @@
 }
 
 <h1>Index</h1>
-<link href="~/css/index.css" rel="stylesheet" />
 <style>
 </style>
 
 
 
-
-<div id="search" class="zProducts" ">
+<div id="search" class="zProducts">
     <div class="ztab">
         <button class="tablinks" onclick="opentab(event, 'Name')">Search by WareHouse</button>
         <button class="tablinks" onclick="opentab(event, 'id')">Filter by Volume</button>
@@ -38,9 +36,10 @@
     </div>
 
 </div>
+<p>
+    <a class="aAdd" asp-page="Create">Create New</a>
+</p>
 
-<br />
-<br />
 @*<table class="table">
         <thead>
             <tr>
@@ -97,7 +96,7 @@
     </table>*@
 
 <div class="w-index">
-    
+
     <table class=" newtable ztable" style="border:none;">
         @*<caption>Warehouse Index</caption>*@
         <thead>

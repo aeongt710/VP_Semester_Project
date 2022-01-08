@@ -6,11 +6,18 @@
     <title>@ViewData["Title"] - sem1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/c1.css" rel="stylesheet" />
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("Notyf")
+    @RenderSection("Scripts", required: false)
 </head>
 <body>
-    <header >
+    <header>
         <nav style="background-color: #222629" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
-            <div class="container" style="background-color: #222629 ; color: #222629" >
+            <div class="container" style="background-color: #222629 ; color: #222629">
                 <a class="navbar-brand text-white" asp-area="" asp-page="/Index">VP Project</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +38,8 @@
                             <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Items/Index">Items</a>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>*@
+                                <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -45,22 +52,19 @@
         </main>
     </div>
 
-    @*<footer class=" footer text-white-50" style="  background-color: rgba(0,0,0,0.01); }">
+    <footer class=" footer text-white-50" style="  background-color: rgba(0,0,0,0.01); }">
         <div class="container">
-            &copy; 2021 - sem1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2021 - VP Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>*@
+    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
     <style>
         .nav-item:hover {
-
             background-color: #6B6E70;
             border-radius: 25px;
-
         }
+
         body {
             margin: 0;
             font-family: calibri;
@@ -69,16 +73,16 @@
             /*background: linear-gradient(to bottom, #6a9113, #141517);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             /*background-color: #222629;
             color: #222629;*/
-            padding-bottom:60px;
+            padding-bottom: 60px;
         }
-        footer{
+
+        footer {
             padding-top: 20px;
-            border:none;
+            border: none;
             border: hidden;
         }
     </style>
-    
-    @await Component.InvokeAsync("Notyf")
-    @await RenderSectionAsync("Scripts", required: false)
+
+
 </body>
 </html>

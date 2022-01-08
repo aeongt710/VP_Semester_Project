@@ -46,7 +46,7 @@
     display: block;
     background-color: #222629;
     margin-left: 910px;
-    margin-right: 70px;
+    
     color: #fff;
     background-color: #343a40;
     border-color: #343a40;
@@ -55,6 +55,9 @@
     padding-bottom: 8px;
     color: #86C232;
     font-weight: 400;
+
+    margin-left:900px;
+
 }
 /*
 
@@ -623,6 +626,7 @@ body {
     color: white;
 }
 
+
 .newrow:hover {
     background-color: #86C232;
     color: white;
@@ -705,7 +709,7 @@ h2 {
     color: #565656;
     font-size: 15px;
     font-weight: normal;
-    position: absolute;
+    position:absolute;
     pointer-events: none;
     left: 5px;
     top: 10px;
@@ -714,6 +718,24 @@ h2 {
     -webkit-transition: 0.2s ease all;
 }
 
+.llabel2 {
+    color: #565656;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 25px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.iinput:focus ~ label, .iinput:not(:placeholder-shown) ~ .llabel2 {
+    top: -20px;
+    font-size: 14px;
+    color: #659c14;
+    font-weight: bold;
+}
 /* active state */
 .iinput:focus ~ label, .iinput:not(:placeholder-shown) ~ .llabel {
     top: -20px;

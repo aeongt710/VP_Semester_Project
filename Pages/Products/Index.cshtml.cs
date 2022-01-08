@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,28 @@ namespace sem1.Pages.Products
 
         public IList<Product> Product { get;set; }
 
-        public async Task OnGetAsync()
+        [BindProperty]
+        [Display(Name = "Enter Product Name")]
+        public String SearchName { get; set; }
+        public async Task OnGetAsync(string taskof,string SearchName)
         {
-            Product = await _context.Product.ToListAsync();
+            if(taskof== "SearchProductName")
+            {
+                Product = await _context.Product.Where(m=>m.Name.ToLower()==SearchName.ToLower()).ToListAsync();
+            }
+            else
+            {
+                Product = await _context.Product.ToListAsync();
+            }
+        }
+        public async Task<IActionResult> OnPostAsync(string SearchName, string taskof)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            return RedirectToAction("", new { SearchName = SearchName, TaskOf = taskof });
+
         }
     }
 }

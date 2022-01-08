@@ -47,6 +47,7 @@ namespace sem1.Pages.Warehouses
             {
                 Warehouse = Warehouse.Where(m => m.Volume >= MinVolume && m.Volume <= MaxVolume).ToList();
             }
+            _notyfService.Success("Success");
         }
 
         [Display(Name = "Minimum Available Volume")]
