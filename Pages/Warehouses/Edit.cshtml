@@ -5,84 +5,126 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="h1Main">Edit</h1>
 
+<style>
+    .Newccenter-div {
+        margin-left: 400px;
+        /*margin-right: 10px;*/
+    }
+    .ins:hover {
+        background-color: #76ac2a;
+        color: white;
+    }
+    .del:hover {
+        background-color: #d54040;
+        color: white;
+    }
+</style>
 <h4>Warehouse</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Warehouse.Id" />
-            <div class="form-group">
-                <label asp-for="Warehouse.Name" class="control-label"></label>
-                <input asp-for="Warehouse.Name" class="form-control" />
-                <span asp-validation-for="Warehouse.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Warehouse.Volume" class="control-label"></label>
-                <input asp-for="Warehouse.Volume" class="form-control" />
-                <span asp-validation-for="Warehouse.Volume" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Warehouse.Address" class="control-label"></label>
-                <input asp-for="Warehouse.Address" class="form-control" />
-                <span asp-validation-for="Warehouse.Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-<hr />
-@if (Model.Warehouse != null)
-{
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Warehouse.Id" />
-            <div class="form-group">
-                <table class="table" width="100%">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h3> All Products:</h3>
-                            </th>
-                            <th>
-                                <h3>Items In Warehouse:</h3>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @foreach (var pds in Model.AllProducts)
-                                {
-                                    <input type="submit" asp-route-PID="@pds.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="AddProduct" value="C @pds.Id @pds.Name [✓]" class="form-control" />
-                                }
-                            </td>
-                            <td>
-                                @foreach (var itw in Model.ItemsInWareHouse)
-                                {
-                                    <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @itw.ProductId  @itw.Product.Name [✘]" class="form-control" />
-                              //      <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Id  @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Name [✘]" class="form-control" />
+<div class="Newccenter-div">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Warehouse.Id" />
+        <div class="form-group">
+            <label asp-for="Warehouse.Name" class="control-label"></label>
+            <input asp-for="Warehouse.Name" class="form-control" />
+            <span asp-validation-for="Warehouse.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Warehouse.Volume" class="control-label"></label>
+            <input asp-for="Warehouse.Volume" class="form-control" />
+            <span asp-validation-for="Warehouse.Volume" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Warehouse.Address" class="control-label"></label>
+            <input asp-for="Warehouse.Address" class="form-control" />
+            <span asp-validation-for="Warehouse.Address" class="text-danger"></span>
+        </div>*@
+                <div class="ggroup">
+                    <input asp-for="Warehouse.Id" class="iinput" placeholder=" " hidden>
+                    <span class="hhighlight" asp-validation-for="Warehouse.Id" hidden></span>
+                    <span class="bbar" asp-validation-for="Warehouse.Id" hidden></span>
+                    <label class="llabel" asp-for="Warehouse.Id" hidden></label>
+                </div>
+                <div class="ggroup">
+                    <input asp-for="Warehouse.Name" class="iinput" placeholder=" ">
+                    <span class="hhighlight" asp-validation-for="Warehouse.Name" hidden></span>
+                    <span class="bbar" asp-validation-for="Warehouse.Name"></span>
+                    <label class="llabel" asp-for="Warehouse.Name"></label>
+                </div>
 
-                                }
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
-    </div>
-</div>
-}
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+                <div class="ggroup">
+                    <input asp-for="Warehouse.Volume" class="iinput" placeholder=" ">
+                    <span class="hhighlight" asp-validation-for="Warehouse.Volume" hidden></span>
+                    <span class="bbar" asp-validation-for="Warehouse.Volume"></span>
+                    <label class="llabel" asp-for="Warehouse.Volume"></label>
+                </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+                <div class="ggroup">
+                    <input asp-for="Warehouse.Address" class="iinput" placeholder=" ">
+                    <span class="hhighlight" asp-validation-for="Warehouse.Address" hidden></span>
+                    <span class="bbar" asp-validation-for="Warehouse.Address"></span>
+                    <label class="llabel" asp-for="Warehouse.Address"></label>
+                </div>
+                <div class="form-group" style="padding-left:84px;">
+                    <input type="submit" value="Save" class="bty" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    @if (Model.Warehouse != null)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Warehouse.Id" />
+                    <div class="form-group">
+                        <table class="table" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h3> All Products:</h3>
+                                    </th>
+                                    <th>
+                                        <h3>Items In Warehouse:</h3>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td >
+                                        @foreach (var pds in Model.AllProducts)
+                                        {
+                                            <input class="ins " type="submit" asp-route-PID="@pds.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="AddProduct" value="C @pds.Id @pds.Name [✓]" class="form-control" />
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var itw in Model.ItemsInWareHouse)
+                                        {
+                                            <input class="del" type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @itw.ProductId  @itw.Product.Name [✘]" class="form-control" />
+                                            //      <input type="submit" asp-route-User="@itw.Id" asp-route-IID="@itw.Id" asp-route-WID="@Model.Warehouse.Id" asp-route-TaskOf="RemoveItem" value="C @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Id  @Model.AllProducts.FirstOrDefault(m => m.Id == itw.ProductId).Name [✘]" class="form-control" />
+
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

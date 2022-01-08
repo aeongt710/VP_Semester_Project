@@ -1,13 +1,61 @@
 ﻿body {
     margin: 0;
     font-family: calibri;
-    background: #6a9113; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #6a9113, #141517); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #6a9113, #141517); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-color: #222629;
+    /*background: #6a9113;*/ /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to bottom, #6a9113, #141517);*/ /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to bottom, #6a9113, #141517);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background-color: #222629;*/
     color: #222629;
 }
+.h1Main {
+    color: #222629;
+}
+.bty {
+    /*background-color: #3b3b3b;*/
+    font-weight:bold;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    width: 150px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #86C232;
+    font-weight: 400;
+}
 
+    .bty:hover {
+        color: #fff;
+        background-color: #23272b;
+        border-color: #1d2124;
+    }
+.aAdd:hover {
+    /* background-color: #31404a;
+        text-decoration:none;
+        color: white;*/
+    color: #fff;
+    background-color: #23272b;
+    border-color: #1d2124;
+    text-decoration: none;
+}
+
+.aAdd {
+    padding-top: 3px;
+    padding-bottom: 0px;
+    color: white;
+    border-radius: 20px;
+    display: block;
+    background-color: #222629;
+    margin-left: 910px;
+    margin-right: 70px;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    width: 150px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #86C232;
+    font-weight: 400;
+}
 /*
 
 .zlogo {
@@ -178,7 +226,7 @@ body {
     max-width: 475px;
     overflow: hidden;
     margin: 30px 0;
-    padding:50px;
+    padding: 50px;
 }
 
 .zhero-image-container {
@@ -333,7 +381,6 @@ h1 {
         }
 
 .ztabcontent {
-    
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
@@ -373,6 +420,7 @@ form input {
 .ztable {
     border: 1px solid #ccc;
     border-collapse: collapse;
+    /*background-color: #222629;*/
     margin: 0;
     padding: 0;
     width: 100%;
@@ -385,7 +433,7 @@ form input {
     }
 
     .ztable tr {
-        background-color: #f8f8f8;
+        background-color: #d7e2eb;
         border: 1px solid #ddd;
         padding: .35em;
     }
@@ -447,3 +495,313 @@ form input {
             }
 }
 
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+
+
+
+
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    /*background-color: #222629;*/
+    border: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /*white-space: nowrap;*/
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap'); */
+
+
+.newtable {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .newtable {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+
+.newhead {
+    text-align: left;
+    padding: 15px;
+}
+
+.newdesc {
+    text-align: left;
+    padding: 15px;
+}
+
+.newrow:nth-child(even) {
+    /*background-color: #6B6E70;*/
+    color: black;
+}
+
+.newrow:hover:nth-child(even) {
+    color: black;
+}
+
+/*.newrow{
+    color: black;
+}*/
+.newhead {
+    background-color: #222629;
+    color: white;
+}
+
+.newrow:hover {
+    background-color: #86C232;
+    color: white;
+}
+
+
+
+body {
+    background-color: #fcfcfc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ccenter-div {
+    /* position: absolute; */
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    height: auto;
+    /*background-color: hsl(244, 38%, 16%);*/
+    background-color: #fcfcfc;
+    border-radius: 3px;
+}
+
+.aaddfrm {
+    padding-top: 20px; /* here */
+    margin-left: 140px;
+    margin-right: 140px;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+    h2 small {
+        font-weight: normal;
+        color: #888;
+        display: block;
+    }
+
+/*.footer {
+    text-align: center;
+}
+
+    .footer a {
+        color: #53B2C8;
+    }*/
+
+/* form starting stylings ------------------------------- */
+.ggroup {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.iinput {
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    /*background-color: #ccc;*/
+    /*background-color: #fcfcfc;*/
+    /*border-radius:2px;*/
+    background-color: rgb(218, 212, 212);
+    border-bottom: 1px solid #757575;
+    border-radius: 15px 8px 5px 5px;
+}
+
+    .iinput:focus {
+        outline: none;
+    }
+
+/* LABEL ======================================= */
+.llabel {
+    color: #565656;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.iinput:focus ~ label, .iinput:not(:placeholder-shown) ~ .llabel {
+    top: -20px;
+    font-size: 14px;
+    color: #659c14;
+    font-weight: bold;
+}
+
+/* BOTTOM BARS ================================= */
+.bbar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+    .bbar:before, .bbar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #86C232;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bbar:before {
+        left: 50%;
+    }
+
+    .bbar:after {
+        right: 50%;
+    }
+
+/* active state */
+input:focus ~ .bbar:before, input:focus ~ .bbar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.hhighlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+.iinput:focus ~ .hhighlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #86C232;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #86C232;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #86C232;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}

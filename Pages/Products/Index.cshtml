@@ -13,26 +13,26 @@
 
 
 <div class="w-index">
-    <table class="ztable" style="width:1170px">
+    <table class="ztable newtable" style="width:1170px">
         @*<caption>Warehouse Index</caption>*@
         <thead>
             <tr>
                 @*<th scope="col">@Html.DisplayNameFor(model => model.Product[0].Id)</th>*@
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Name)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Length)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Width)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Height)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Vendor)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Product[0].Price)</th>
-                <th scope="col">Volume</th>
-                <th scope="col">Items</th>
-                <th scope="col">Properties</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Name)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Length)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Width)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Height)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Vendor)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Product[0].Price)</th>
+                <th class="newhead" scope="col">Volume</th>
+                <th class="newhead" scope="col">Items</th>
+                <th class="newhead" scope="col">Properties</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Product)
             {
-            <tr>
+            <tr class="newrow">
                 @*<td data-label="Name">
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>*@

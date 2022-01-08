@@ -7,11 +7,13 @@
 
 <h1>Index</h1>
 <link href="~/css/index.css" rel="stylesheet" />
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<style>
+</style>
 
-<div id="search" class="zProducts">
+
+
+
+<div id="search" class="zProducts" ">
     <div class="ztab">
         <button class="tablinks" onclick="opentab(event, 'Name')">Search by WareHouse</button>
         <button class="tablinks" onclick="opentab(event, 'id')">Filter by Volume</button>
@@ -20,7 +22,7 @@
         <form method="post">
             <label asp-for="WarehouseName"></label>
             <input asp-for="WarehouseName" />
-            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="zsbmt" value="Search"/>
+            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="zsbmt" value="Search" />
         </form>
     </div>
 
@@ -37,66 +39,66 @@
 
 </div>
 
-
-
-
+<br />
+<br />
 @*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Warehouse[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Warehouse[0].Volume)
-            </th>
-            <th>
-                Total Volume
-            </th>
-            <th>
-                Percentage
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Warehouse!=null)
-            foreach (var item in Model.Warehouse)
-            {
-                Model.Volume = 0;
-                Model.ItemsInWarehouse = Model.AllItems.Where(m => m.WarehouseId == item.Id).ToList();
-                foreach (var vol in Model.ItemsInWarehouse)
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Warehouse[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Warehouse[0].Volume)
+                </th>
+                <th>
+                    Total Volume
+                </th>
+                <th>
+                    Percentage
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Warehouse!=null)
+                foreach (var item in Model.Warehouse)
                 {
-                    Model.Product = Model.AllProducts.FirstOrDefault(m => m.Id == vol.ProductId);
-                    if (Model.Product != null)
-                        Model.Volume = Model.Volume + Model.Product.Height * Model.Product.Width * Model.Product.Length;
+                    Model.Volume = 0;
+                    Model.ItemsInWarehouse = Model.AllItems.Where(m => m.WarehouseId == item.Id).ToList();
+                    foreach (var vol in Model.ItemsInWarehouse)
+                    {
+                        Model.Product = Model.AllProducts.FirstOrDefault(m => m.Id == vol.ProductId);
+                        if (Model.Product != null)
+                            Model.Volume = Model.Volume + Model.Product.Height * Model.Product.Width * Model.Product.Length;
+                    }
+                    Model.Volume = Model.Volume + item.Volume;
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Volume)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Volume)
+                        </td>
+                        <td>
+                            <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                            <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID">Items</a>
+                        </td>
+                    </tr>
                 }
-                Model.Volume = Model.Volume + item.Volume;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Volume)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => Model.Volume)
-                    </td>
-                    <td>
-                        <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
-                        <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID">Items</a>
-                    </td>
-                </tr>
-            }
-    </tbody>
-</table>*@
+        </tbody>
+    </table>*@
 
 <div class="w-index">
-    <table class="ztable" style="border-color:black">
+    
+    <table class=" newtable ztable" style="border:none;">
         @*<caption>Warehouse Index</caption>*@
         <thead>
             <tr class="newrow">
@@ -122,51 +124,55 @@
                             Model.Volume = Model.Volume + Model.Product.Height * Model.Product.Width * Model.Product.Length;
                     }
                     Model.Volume = Model.Volume + item.Volume;
-            <tr class="newrow">
-                <td data-label="Name" class="newdesc">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td data-label="Volume" class="newdesc">
-                    @Html.DisplayFor(modelItem => item.Volume)
-                </td>
-                <td data-label="Total Volume" class="newdesc">
-                    @Html.DisplayFor(modelItem => Model.Volume)
-                </td>
-                <td data-label="Percentage" class="newdesc">
-                    <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
-                </td>
-                <td data-label="Name" class="newdesc">
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td data-label="Properties" class="newdesc">
-                    &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
-                </td>
-                <td data-label="Items" class="newdesc">
-                    <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
-                </td>
-            </tr>
-            }
+                    <tr class="newrow">
+                        <td data-label="Name" class="newdesc">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td data-label="Volume" class="newdesc">
+                            @Html.DisplayFor(modelItem => item.Volume)
+                        </td>
+                        <td data-label="Total Volume" class="newdesc">
+                            @Html.DisplayFor(modelItem => Model.Volume)
+                        </td>
+                        <td data-label="Percentage" class="newdesc">
+                            <progress value="@(Model.Volume-item.Volume)" max="@Model.Volume"></progress>
+                        </td>
+                        <td data-label="Name" class="newdesc">
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td data-label="Properties" class="newdesc">
+                            &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
+                        </td>
+                        <td data-label="Items" class="newdesc">
+                            <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
+                        </td>
+                    </tr>
+                }
         </tbody>
     </table>
- </div>
+</div>
 
 
 
-    <script type="text/javascript">
-        function opentab(evt, searchmthd) {
-            var i, ztabcontent, tablinks;
-            ztabcontent = document.getElementsByClassName("ztabcontent");
-            for (i = 0; i < ztabcontent.length; i++) {
-                ztabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(searchmthd).style.display = "block";
-            evt.currentTarget.className += " active";
-            return;
+<script type="text/javascript">
+    function opentab(evt, searchmthd) {
+        var i, ztabcontent, tablinks;
+        ztabcontent = document.getElementsByClassName("ztabcontent");
+        for (i = 0; i < ztabcontent.length; i++) {
+            ztabcontent[i].style.display = "none";
         }
-    </script>
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(searchmthd).style.display = "block";
+        evt.currentTarget.className += " active";
+        return;
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

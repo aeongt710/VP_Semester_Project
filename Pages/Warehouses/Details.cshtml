@@ -5,82 +5,100 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
+<h1 class="h1Main">Details</h1>
+<style>
+    .Newccenter-div {
+        padding-left:400px; 
+        /*padding-right:100px;*/
+    }
+    .row{
+        text-align:left;
+    }
+    .col-sm-10{
+        padding-left:80px;
+    }
+</style>
 <div>
     <h4>Warehouse</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Warehouse.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Warehouse.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Warehouse.Volume)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Warehouse.Volume)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CalVolume)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CalVolume)
-        </dd>
-        <dt class="col-sm-2">
-            Total Volume
-        </dt>
-        <dd class="col-sm-10">
-            @(Model.CalVolume + Model.Warehouse.Volume)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Warehouse.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Warehouse.Address)
-        </dd>
-    </dl>
-</div>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <h4>Items In Warehouse</h4>
-        <div class="form-group">
-            <table class="table" width="100%">
-                <thead>
-                    <tr>
-                        <th>
-                            <h5>Items</h5>
-                        </th>
-                        <th>
-                            <h5>Volume</h5>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{if (Model.ItemsInWarehouse != null)
-                            foreach (var items in Model.ItemsInWarehouse)
-                            {
-                                <tr>
-                                    <td>
-                                        @{
-                                            Model.Product = Model.AllProducts.FirstOrDefault(m => m.Id == items.ProductId);
-                                        }
-                                        @Model.Product.Name
-                                    </td>
-                                    <td>
-                                        @(Model.Product.Height* Model.Product.Width* Model.Product.Length)
-                                    </td>
-                                </tr>
-                            }
-                    }
-                </tbody>
-            </table>
-        </div>
+    <div class="Newccenter-div">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Warehouse.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Warehouse.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Warehouse.Volume)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Warehouse.Volume)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CalVolume)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CalVolume)
+            </dd>
+            <dt class="col-sm-2">
+                Total Volume
+            </dt>
+            <dd class="col-sm-10">
+                @(Model.CalVolume + Model.Warehouse.Volume)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Warehouse.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Warehouse.Address)
+            </dd>
+        </dl>
     </div>
 </div>
+
+        <hr  />
+        <h4 style="align-content:center">Items In Warehouse</h4>
+        <div style="padding-left:400px">
+        <div class="row">
+            <div class="col-md-4">
+                
+                <div class="form-group">
+                    <table class="table" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h5>Items</h5>
+                                </th>
+                                <th>
+                                    <h5>Volume</h5>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{if (Model.ItemsInWarehouse != null)
+                                    foreach (var items in Model.ItemsInWarehouse)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @{
+                                                    Model.Product = Model.AllProducts.FirstOrDefault(m => m.Id == items.ProductId);
+                                                }
+                                                @Model.Product.Name
+                                            </td>
+                                            <td>
+                                                @(Model.Product.Height* Model.Product.Width* Model.Product.Length)
+                                            </td>
+                                        </tr>
+                                    }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Warehouse.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
