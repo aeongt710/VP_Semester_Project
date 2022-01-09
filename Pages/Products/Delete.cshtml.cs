@@ -13,7 +13,7 @@ namespace sem1.Pages.Products
     public class DeleteModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
-        public List<Warehouse> Ware { get; set; }
+        //public List<Warehouse> Ware { get; set; }
 
 
         public DeleteModel(sem1.Data.ApplicationDbContext context)
@@ -29,7 +29,7 @@ namespace sem1.Pages.Products
         [BindProperty]
         public IList<Item> Items { get; set; }
 
-        //public HashSet<Warehouse> Ware;
+        public HashSet<Warehouse> Ware;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,17 +44,15 @@ namespace sem1.Pages.Products
             Items =_context.Item.Include(a => a.Warehouse)
                 .Where(m => m.ProductId == id)
                 .ToListAsync().Result;
-            //Ware = new HashSet<Warehouse>();
-            foreach(var item in Items)
+            Ware = new HashSet<Warehouse>();
+
+            foreach (var item in Items)
             {
-                Ware = new List<Warehouse>();
-                Warehouse www = _context.Warehouse.FirstOrDefaultAsync(m => m.Id == item.Warehouse.Id).Result;
+                //Warehouse www = _context.Warehouse.FirstOrDefaultAsync(m => m.Id == item.Warehouse.Id).Result;
+                //Ware.Add(www);
 
 
-                Ware.Add(www);
-
-
-                //Ware.Add(item.Warehouse);
+                Ware.Add(item.Warehouse);
             }
 
             if (Product == null)

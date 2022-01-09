@@ -1,18 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
+@*<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - sem1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/c1.css" rel="stylesheet" />
 
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await Component.InvokeAsync("Notyf")
-    @RenderSection("Scripts", required: false)
+</head>*@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - sem1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/c1.css" />
 </head>
 <body>
     <header>
@@ -25,9 +26,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Warehouses/Index">Warehouses</a>
                         </li>
@@ -37,9 +35,6 @@
                         <li class="nav-item">
                             <a class="nav-link " style="color:#86C232" asp-area="" asp-page="/Items/Index">Items</a>
                         </li>
-                        @*<li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
-                            </li>*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -58,31 +53,11 @@
         </div>
     </footer>
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <style>
-        .nav-item:hover {
-            background-color: #6B6E70;
-            border-radius: 25px;
-        }
-
-        body {
-            margin: 0;
-            font-family: calibri;
-            /*background: #6a9113;*/ /* fallback for old browsers */
-            /*background: -webkit-linear-gradient(to bottom, #6a9113, #141517);*/ /* Chrome 10-25, Safari 5.1-6 */
-            /*background: linear-gradient(to bottom, #6a9113, #141517);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            /*background-color: #222629;
-            color: #222629;*/
-            padding-bottom: 60px;
-        }
-
-        footer {
-            padding-top: 20px;
-            border: none;
-            border: hidden;
-        }
-    </style>
-
-
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

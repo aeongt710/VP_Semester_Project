@@ -8,7 +8,7 @@
 <h1>Index</h1>
 <link href="~/css/index.css" rel="stylesheet" />
 <p>
-    <a asp-page="Create">Create New</a>
+    @*<a asp-page="Create">Create New</a>*@
 </p>
 
 @*<form action="/" method="post">
@@ -19,46 +19,56 @@
 </form>*@
 
 <div class="w-index">
-    <table class="ztable">
+    <table class="ztable newtable">
         @*<caption>Warehouse Index</caption>*@
         <thead>
             <tr>
-                <th scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Id)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Name)</th>
-                <th scope="col">Volume</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Id)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Name)</th>
-                <th scope="col">Properties</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Id)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Name)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Price)</th>
+                <th class="newhead" scope="col">Volume</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Id)</th>
+                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Name)</th>
+                <th class="newhead" scope="col">Available Volume</th>
+                <th class="newhead" scope="col">Properties</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Item)
                 {
-                    <tr>
-                        <td data-label="Name">
-                            @Html.DisplayFor(modelItem => item.Product.Id)
-                        </td>
-                        <td data-label="Volume">
-                            @Html.DisplayFor(modelItem => item.Product.Name)
-                        </td>
-                        <td data-label="Total Volume">
-                            @(item.Product.Length * item.Product.Width* item.Product.Height)
-                        </td>
-                        <td data-label="Percentage">
-                            @Html.DisplayFor(modelItem => item.Warehouse.Id)
-                        </td>
-                        <td>
-                            <a asp-page="../Warehouses/Details" asp-route-id="@item.WarehouseId"> @Html.DisplayFor(modelItem => item.Warehouse.Name)</a>
-                        </td>
-                        <td data-label="Properties">
-                            &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
-                            <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
-                        </td>
-                        @*<td data-label="Items">
-                            <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
-                        </td>*@
-                    </tr>
+            <tr class="newrow">
+                <td data-label="Name">
+
+                    <a asp-page="../Products/Details" asp-route-id="@item.ProductId"> @Html.DisplayFor(modelItem => item.Product.Id)</a>
+
+                </td>
+                <td data-label="Volume">
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td data-label="Price">
+                    @Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td data-label="Total Volume">
+                    @(item.Product.Length * item.Product.Width* item.Product.Height)
+                </td>
+                <td data-label="Percentage">
+                    <a asp-page="../Warehouses/Details" asp-route-id="@item.WarehouseId"> @Html.DisplayFor(modelItem => item.Warehouse.Id)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Warehouse.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Warehouse.Volume)
+                </td>
+                <td data-label="Properties">
+                    @* &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |*@
+                    <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
+                </td>
+                @*<td data-label="Items">
+            <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
+        </td>*@
+            </tr>
                 }
         </tbody>
     </table>

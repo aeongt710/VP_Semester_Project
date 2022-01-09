@@ -17,21 +17,53 @@
         <button class="tablinks" onclick="opentab(event, 'id')">Filter by Volume</button>
     </div>
     <div id="Name" class="ztabcontent">
-        <form method="post">
-            <label asp-for="WarehouseName"></label>
-            <input asp-for="WarehouseName" />
-            <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="zsbmt" value="Search" />
+        <form method="post" style="padding-bottom:20px;">
+            <div style="display: flex; padding-left:150px; padding-right:150px; justify-content: space-between; height: 80px; padding-top:20px;" >
+                <div class="ggroup">
+                    <input asp-for="WarehouseName" class="iinput" placeholder=" ">
+                    <span class="hhighlight" asp-validation-for="WarehouseName" hidden></span>
+                    <span class="bbar" asp-validation-for="WarehouseName"></span>
+                    <label class="llabel2" asp-for="WarehouseName"></label>
+                </div>
+
+
+                @*<label asp-for="WarehouseName"></label>
+        <input asp-for="WarehouseName" />*@
+                <div>
+                    <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="bty" value="Search" />
+                </div>
+            </div>
         </form>
     </div>
 
     <div id="id" class="ztabcontent">
         <form method="post">
-            <label asp-for="@Model.MinVolume"></label>
-            <input asp-for="@Model.MinVolume" />
-            <label asp-for="@Model.MaxVolume"></label>
-            <input asp-for="@Model.MaxVolume" />
-            <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-MaxVolume="@Model.MaxVolume" asp-route-taskof="FileterWarehouseByVolume" class="btn-secondary" value="Search" />
-            @*asp-route-MaxVolume="@Model.MaxVolume"*@
+            <div style="display:inline-block; ">
+                <div style="display: flex; padding-bottom: 100px;  justify-content: space-between; height: 80px; padding-top: 20px;">
+                    <div class="ggroup">
+                        <input asp-for="@Model.MinVolume" class="iinput" placeholder=" ">
+                        <span class="hhighlight" asp-validation-for="@Model.MinVolume" hidden></span>
+                        <span class="bbar" asp-validation-for="@Model.MinVolume"></span>
+                        <label class="llabel2" asp-for="@Model.MinVolume"></label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="ggroup">
+                        <input asp-for="@Model.MaxVolume" class="iinput" placeholder=" ">
+                        <span class="hhighlight" asp-validation-for="@Model.MaxVolume" hidden></span>
+                        <span class="bbar" asp-validation-for="@Model.MaxVolume"></span>
+                        <label class="llabel2" asp-for="@Model.MaxVolume"></label>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-MaxVolume="@Model.MaxVolume" asp-route-taskof="FileterWarehouseByVolume" class="bty" value="Search" />
+                </div>
+            </div>
+            @*<label asp-for="@Model.MinVolume"></label>
+        <input asp-for="@Model.MinVolume" />
+        <label asp-for="@Model.MaxVolume"></label>
+        <input asp-for="@Model.MaxVolume" />
+        <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-MaxVolume="@Model.MaxVolume" asp-route-taskof="FileterWarehouseByVolume" class="btn-secondary" value="Search" />*@
+
         </form>
     </div>
 

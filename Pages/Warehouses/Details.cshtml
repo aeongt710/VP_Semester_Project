@@ -8,7 +8,7 @@
 <h1 class="h1Main">Details</h1>
 <style>
     .Newccenter-div {
-        padding-left:400px; 
+        padding-left: 425px;
         /*padding-right:100px;*/
     }
     .row{
@@ -36,13 +36,13 @@
                 @Html.DisplayFor(model => model.Warehouse.Volume)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CalVolume)
+                Occupied&nbsp;Volume
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.CalVolume)
             </dd>
             <dt class="col-sm-2">
-                Total Volume
+                Total&nbsp;Volume
             </dt>
             <dd class="col-sm-10">
                 @(Model.CalVolume + Model.Warehouse.Volume)
@@ -59,7 +59,7 @@
 
         <hr  />
         <h4 style="align-content:center">Items In Warehouse</h4>
-        <div style="padding-left:400px">
+        <div style="padding-left:450px">
         <div class="row">
             <div class="col-md-4">
                 

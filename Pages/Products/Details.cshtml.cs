@@ -18,7 +18,10 @@ namespace sem1.Pages.Products
         {
             _context = context;
         }
+        [BindProperty]
+        public IList<Item> Items { get; set; }
 
+        public HashSet<Warehouse> Ware;
         public Product Product { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -29,7 +32,15 @@ namespace sem1.Pages.Products
             }
 
             Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
+            Items = _context.Item.Include(a => a.Warehouse)
+                .Where(m => m.ProductId == id)
+                .ToListAsync().Result;
+            Ware = new HashSet<Warehouse>();
 
+            foreach (var item in Items)
+            {
+                Ware.Add(item.Warehouse);
+            }
             if (Product == null)
             {
                 return NotFound();

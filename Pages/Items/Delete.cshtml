@@ -11,25 +11,103 @@
 <div>
     <h4>Item</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Product)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Product.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Warehouse)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Warehouse.Id)
-        </dd>
-    </dl>
+    <div class="Newccenter-div">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product)&nbsp;ID
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Length)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Length)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Width)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Width)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Height)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Height)
+            </dd>
+            <dt class="col-sm-2">
+                Volume
+            </dt>
+            <dd class="col-sm-10">
+                @{int v = Model.Item.Product.Height * Model.Item.Product.Width * Model.Item.Product.Length;}
+                @v
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Price)
+            </dd>
+            <dt class="col-sm-2">
+                Product&nbsp;Vendor
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Vendor)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Product.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Product.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Warehouse)&nbsp;ID
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Warehouse.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item.Warehouse.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item.Warehouse.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <hr />
     <h5>Note:</h5>
+
     <p>Volume of Warehouse <b>@Model.Warehouse.Name</b> will be updated from <b>@Model.Warehouse.Volume</b> to <b>@(Model.Warehouse.Volume + (Model.Product.Length * Model.Product.Width * Model.Product.Height))</b></p>
     <form method="post">
         <input type="hidden" asp-for="Item.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Delete" class="bty" /><br />
         <a asp-page="./Index">Back to List</a>
     </form>
 </div>
+<style>
+    .Newccenter-div {
+        padding-left: 430px;
+        /*padding-right:100px;*/
+    }
+    .bty:hover {
+        color: red;
+        font-weight: bold;
+    }
+    .row {
+        text-align: left;
+    }
+
+    .col-sm-10 {
+        padding-left: 80px;
+    }
+</style>

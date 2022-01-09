@@ -1,5 +1,4 @@
 using AspNetCoreHero.ToastNotification;
-using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,12 +28,6 @@ namespace sem1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages().AddRazorRuntimeCompilation();
-            services.AddNotyf(config => {
-                config.DurationInSeconds = 10;
-                config.IsDismissable = true;
-                config.Position = NotyfPosition.BottomRight;
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -42,10 +35,12 @@ namespace sem1
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddNotyf(config => {
+                config.DurationInSeconds = 10;
+                config.IsDismissable = true;
+                config.Position = NotyfPosition.BottomRight;
             });
-
-            
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +57,7 @@ namespace sem1
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseNotyf();
+
             //
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
@@ -79,7 +74,7 @@ namespace sem1
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

@@ -7,6 +7,38 @@
     /*background-color: #222629;*/
     color: #222629;
 }
+
+
+
+
+.nav-item:hover {
+    background-color: #6B6E70;
+    border-radius: 25px;
+}
+
+body {
+    margin: 0;
+    font-family: calibri;
+    /*background: #6a9113;*/ /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to bottom, #6a9113, #141517);*/ /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to bottom, #6a9113, #141517);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background-color: #222629;
+            color: #222629;*/
+    padding-bottom: 60px;
+}
+
+footer {
+    padding-top: 20px;
+    border: none;
+    border: hidden;
+}
+
+
+
+
+
+
+
 .h1Main {
     color: #222629;
 }
