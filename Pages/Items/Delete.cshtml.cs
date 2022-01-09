@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,11 @@ namespace sem1.Pages.Items
     public class DeleteModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
-
-        public DeleteModel(sem1.Data.ApplicationDbContext context)
+        private readonly INotyfService _notyfService;
+        public DeleteModel(sem1.Data.ApplicationDbContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfService = notyfService;
         }
 
         [BindProperty]
@@ -60,6 +62,7 @@ namespace sem1.Pages.Items
                 _context.Attach(Warehouse).State = EntityState.Modified;
                 _context.Item.Remove(Item);
                 await _context.SaveChangesAsync();
+                _notyfService.Success("Item Deleted Successfully", 5);
             }
 
             return RedirectToPage("./Index");

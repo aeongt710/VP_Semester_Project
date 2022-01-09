@@ -17,11 +17,9 @@ namespace sem1.Pages.Warehouses
     public class IndexModel : PageModel
     {
         private readonly sem1.Data.ApplicationDbContext _context;
-        private readonly INotyfService _notyfService;
-        public IndexModel(sem1.Data.ApplicationDbContext context, INotyfService noty)
+        public IndexModel(sem1.Data.ApplicationDbContext context)
         {
             _context = context;
-            _notyfService = noty;
         }
 
         public IList<Warehouse> Warehouse { get;set; }
@@ -47,7 +45,6 @@ namespace sem1.Pages.Warehouses
             {
                 Warehouse = Warehouse.Where(m => m.Volume >= MinVolume && m.Volume <= MaxVolume).ToList();
             }
-            _notyfService.Success("Success");
         }
 
         [Display(Name = "Minimum Available Volume")]

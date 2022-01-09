@@ -65,7 +65,7 @@ namespace sem1.Pages.Warehouses
                 }
 
                 _context.Attach(Warehouse).State = EntityState.Modified;
-
+                _notyfService.Information("Warehouse Updated", 5);
                 try
                 {
                     await _context.SaveChangesAsync();
