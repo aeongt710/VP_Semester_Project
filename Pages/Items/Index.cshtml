@@ -4,73 +4,138 @@
 @{
     ViewData["Title"] = "Index";
 }
+@*<p>
+    <a asp-page="Create">Create New</a>
+</p>*@
+<h1 style="color:#242424">Items</h1>
+<div id="search" class="zProducts">
+    <div class="ztab">
+        <button class="tablinks" onclick="opentab(event, 'Name')">Search by WareHouse</button>
+        <button class="tablinks" onclick="opentab(event, 'id')">Search by Product</button>
+    </div>
+    <div id="Name" class="ztabcontent">
+        <form method="post" style="padding-bottom:20px;">
+            <div style="display: flex; padding-left:150px; padding-right:150px; justify-content: space-between; height: 80px; padding-top:20px;">
+                <div class="ggroup">
+                    <input asp-for="WarehouseName" class="iinput" placeholder=" ">
+                    <span class="hhighlight" asp-validation-for="WarehouseName" hidden></span>
+                    <span class="bbar" asp-validation-for="WarehouseName"></span>
+                    <label class="llabel2" asp-for="WarehouseName"></label>
+                </div>
+                <div>
+                    <input type="submit" asp-route-WarehouseName="@Model.WarehouseName" asp-route-taskof="SearchWarehouseName" class="bty" value="Search" />
+                </div>
+            </div>
+        </form>
+    </div>
 
-<h1>Index</h1>
-<link href="~/css/index.css" rel="stylesheet" />
-<p>
-    @*<a asp-page="Create">Create New</a>*@
-</p>
+    <div id="id" class="ztabcontent">
+        <form method="post" style="padding-bottom:20px;">
+                <div style="display: flex; padding-left:150px; padding-right:150px; justify-content: space-between; height: 80px; padding-top:20px;">
+                    <div class="ggroup">
+                        <input asp-for="ProductName" class="iinput" placeholder=" ">
+                        <span class="hhighlight" asp-validation-for="ProductName" hidden></span>
+                        <span class="bbar" asp-validation-for="ProductName"></span>
+                        <label class="llabel2" asp-for="ProductName"></label>
+                    </div>
 
-@*<form action="/" method="post">
-    <label asp-for="SerachProductName"></label>
-    <input asp-for="SerachProductName" />
-    <input type="submit" asp-route-ProductName="@Model.SerachProductName" />
+                    <div>
+                        <input type="submit" asp-route-ProductName="@Model.ProductName" asp-route-taskof="SearchProductName" class="bty" value="Search" />
+                    </div>
+            </div>
+            @*<label asp-for="@Model.MinVolume"></label>
+                <input asp-for="@Model.MinVolume" />
+                <label asp-for="@Model.MaxVolume"></label>
+                <input asp-for="@Model.MaxVolume" />
+                <input type="submit" asp-route-MinVolume="@Model.MinVolume" asp-route-MaxVolume="@Model.MaxVolume" asp-route-taskof="FileterWarehouseByVolume" class="btn-secondary" value="Search" />*@
 
-</form>*@
+        </form>
+    </div>
 
-<div class="w-index">
-    <table class="ztable newtable">
-        @*<caption>Warehouse Index</caption>*@
-        <thead>
-            <tr>
-                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Id)</th>
-                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Name)</th>
-                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Price)</th>
-                <th class="newhead" scope="col">Volume</th>
-                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Id)</th>
-                <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Name)</th>
-                <th class="newhead" scope="col">Available Volume</th>
-                <th class="newhead" scope="col">Properties</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item)
+ </div>
+
+
+
+
+
+
+
+    @*<form action="/" method="post">
+            <label asp-for="SerachProductName"></label>
+            <input asp-for="SerachProductName" />
+            <input type="submit" asp-route-ProductName="@Model.SerachProductName" />
+
+        </form>*@
+
+    <div class="w-index">
+        <table class="ztable newtable">
+            @*<caption>Warehouse Index</caption>*@
+            <thead>
+                <tr>
+                    <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Id)</th>
+                    <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Name)</th>
+                    <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Product.Price)</th>
+                    <th class="newhead" scope="col">Volume</th>
+                    <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Id)</th>
+                    <th class="newhead" scope="col">@Html.DisplayNameFor(model => model.Item[0].Warehouse.Name)</th>
+                    <th class="newhead" scope="col">Available Volume</th>
+                    <th class="newhead" scope="col">Properties</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item)
                 {
-            <tr class="newrow">
-                <td data-label="Name">
+                    <tr class="newrow">
+                        <td data-label="Name">
 
-                    <a asp-page="../Products/Details" asp-route-id="@item.ProductId"> @Html.DisplayFor(modelItem => item.Product.Id)</a>
+                            <a asp-page="../Products/Details" asp-route-id="@item.ProductId"> @Html.DisplayFor(modelItem => item.Product.Id)</a>
 
-                </td>
-                <td data-label="Volume">
-                    @Html.DisplayFor(modelItem => item.Product.Name)
-                </td>
-                <td data-label="Price">
-                    @Html.DisplayFor(modelItem => item.Product.Price)
-                </td>
-                <td data-label="Total Volume">
-                    @(item.Product.Length * item.Product.Width* item.Product.Height)
-                </td>
-                <td data-label="Percentage">
-                    <a asp-page="../Warehouses/Details" asp-route-id="@item.WarehouseId"> @Html.DisplayFor(modelItem => item.Warehouse.Id)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Warehouse.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Warehouse.Volume)
-                </td>
-                <td data-label="Properties">
-                    @* &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |*@
-                    <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
-                </td>
-                @*<td data-label="Items">
-            <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
-        </td>*@
-            </tr>
+                        </td>
+                        <td data-label="Volume">
+                            @Html.DisplayFor(modelItem => item.Product.Name)
+                        </td>
+                        <td data-label="Price">
+                            @Html.DisplayFor(modelItem => item.Product.Price)
+                        </td>
+                        <td data-label="Total Volume">
+                            @(item.Product.Length * item.Product.Width* item.Product.Height)
+                        </td>
+                        <td data-label="Percentage">
+                            <a asp-page="../Warehouses/Details" asp-route-id="@item.WarehouseId"> @Html.DisplayFor(modelItem => item.Warehouse.Id)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Warehouse.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Warehouse.Volume)
+                        </td>
+                        <td data-label="Properties">
+                            @* &nbsp;&nbsp;<a asp-page="./Edit" asp-route-id="@item.Id"><img src="./img/edit.png" alt=""></a> |*@
+                            <a asp-page="./Details" asp-route-id="@item.Id"><img src="./img/detail.png" alt=""></a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id"><img src="./img/del.png" alt=""></a>
+                        </td>
+                        @*<td data-label="Items">
+                                <a asp-page="../Items/Index" asp-route-id="@item.Id" asp-route-taskof="RouteWarehouseID"><img src="./img/item.png" alt=""></a>
+                            </td>*@
+                    </tr>
                 }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
+    <script type="text/javascript">
+        function opentab(evt, searchmthd) {
+            var i, ztabcontent, tablinks;
+            ztabcontent = document.getElementsByClassName("ztabcontent");
+            for (i = 0; i < ztabcontent.length; i++) {
+                ztabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(searchmthd).style.display = "block";
+            evt.currentTarget.className += " active";
+            return;
+        }
+    </script>
